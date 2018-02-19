@@ -1,3 +1,4 @@
+//Sasha Stramel
 // LinkedList.cpp
 
 // tom bailey   0745  5 oct 2010
@@ -41,29 +42,6 @@ const List & List::operator=(const List & other)
 
 	return *this;
 }
-
-bool List & List::operator==(const List &rhs){
-    if(this.size() == 0 && rhs.size() == 0){return true;}//both empty
-    if(this.size() != rhs.size()){return false;}//sizes not the same
-
-    Node * lptr = this->next_;
-    Node * rptr = rhs->next_;
-		Double lEntry = lptr->entry_;
-    Double rEntry = rptr->entry_;
-		while (lptr != NULL && rptr != NULL)
-		{
-      if(lEntry != rEntry){
-        return false;
-      }
-      lptr = lptr->next_;
-      rptr = rptr->next_;
-      lEntry = lptr->entry_;
-      rEntry = rptr->entry_;
-		}
-
-  	return true;
-}
-
 
 bool List::empty() const
 {
@@ -147,3 +125,43 @@ ostream & operator<<(ostream & outfile, const List & list)
 	list.print(outfile);
 	return outfile;
 }
+int List::size()
+{
+    int count(0);
+    Node *p = first_;
+    while (p != NULL)
+    {
+        p = p->next_;
+        count++;
+    }
+    return count;
+}
+double List::sum()
+{
+    double sum(0);
+    Node *ptr = first_;
+    while (ptr != NULL)
+    {
+        sum = sum + ptr->entry_;
+        ptr = ptr->next_;
+    }
+    return sum;
+}
+void List::insertAsLast(double x)
+{
+    Node *p = first_;
+    if (empty())
+    {
+        first_ = new Node(x, first_);
+    }
+    else
+    {
+        while (p->next_ != NULL)
+        {
+            p = p->next_;
+        }
+        p->next_ = new Node(x, NULL);
+    }
+}
+
+

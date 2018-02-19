@@ -1,3 +1,4 @@
+//Sasha Stramel
 // LinkedList.h
 
 // tom bailey   0740  5 oct 2010
@@ -44,7 +45,6 @@ public:
 	const List & operator=(const List & other);
 
 	// Test for equality
-	bool List & operator==(const List &rhs);
 
 	//*** Accessors ***
 
@@ -67,6 +67,13 @@ public:
 	// post: the first double in this List has been removed
 	//         from this List and has been returned.
 	double removeFirst();
+    
+    
+    int List::size();
+    
+    double List::sum();
+    
+    void List::insertAsLast(double x);
 
 private:
 	//*** Inaccessible standard functions ***
